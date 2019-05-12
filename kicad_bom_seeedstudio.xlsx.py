@@ -94,7 +94,6 @@ def write_bom_seeed(output_file_slug, components, links):
         cellformats[i] = cellformat
         worksheet.write_string( 0, i, field_names[i], cellformats[i])
         field_sizes[i] = len(field_names[i]) + 10
-        print(field_sizes[i])
 
     row = 1
     for p in sorted(parts.keys()):
