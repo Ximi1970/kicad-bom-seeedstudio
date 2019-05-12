@@ -48,7 +48,6 @@ def parse_kicad_xml(input_file):
             components[name] = opl
         elif mpn:
             components[name] = mpn
-            components[name] = mpn
         else:
             missing += [name]
             continue
