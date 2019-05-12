@@ -2,13 +2,14 @@
 
 A [KiCad](https://kicad-pcb.org) Bill-of-Materials (BOM) plugin to follow
 [SeeedStudio](https://www.seedstudio.com)'s [Fusion PCBA](https://www.seeedstudio.com/fusion_pcb.html)
-assembly service's [template](https://statics3.seeedstudio.com/assets/file/fusion/bom_template_2016-08-18.csv),
+assembly service's [template](https://statics3.seeedstudio.com/files/20184/2018.xlsx) [Fusion PCBA Log](http://support.seeedstudio.com/knowledgebase/articles/1886734-how-do-i-prepare-the-bill-of-materials-bom-file),
 that is:
 
 ```
-Part/Designator,Manufacture Part Number/Seeed SKU,Quantity
-C1,RHA,1
-"D1,D2",CC0603KRX7R9BB102,2
+Designator,MPN/Seeed SKU,Qty,Link
+"C1,C2,C3,C4,C5", "RHA0J471MCN1GS", "5", "https://www.digikey.com.cn/product-detail/zh/nichicon/RHA0J471MCN1GS/493-3771-1-ND/2209480?keywords=RHA0J471MCN1GS"
+"A1,A4", "RH0111-30002", "2", "https://statics3.seeedstudio.com/images/opl/datasheet/318020010.pdf"
+"D1", "CYBLE-014008-00", "1", "https://www.digikey.com.cn/product-detail/zh/cypress-semiconductor-corp/CYBLE-014008-00/428-3600-1-ND/6052585?keywords=CYBLE-014008-00"
 ```
 
 ## How to use it

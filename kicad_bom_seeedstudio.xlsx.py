@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import csv
+import xlsxwriter
 import sys
 import xml.etree.ElementTree as ET
 
@@ -82,6 +82,46 @@ def write_bom_seeed(output_file_slug, components, links):
         partslink[components[c]] = links[c]
 
     field_names = ['Designator', 'MPN/Seeed SKU', 'Qty','Link']
+    field_sizes = {}
+    
+    workbook = xlsxwriter.Workbook("{}.xlsx".format(output_file_slug))
+    worksheet = workbook.add_worksheet()
+    
+    cellformats = {}
+    for i in range(len(field_names)):
+        cellformat = workbook.add_format()
+        cellformat.set_center_across()
+        cellformats[i] = cellformat
+        worksheet.write_string( 0, i, field_names[i], cellformats[i])
+        field_sizes[i] = len(field_names[i]) + 10
+        print(field_sizes[i])
+
+    row = 1
+    for p in sorted(parts.keys()):
+        pieces = sorted(parts[p], key=natural_keys)
+        designators = ",".join(pieces)
+    
+        worksheet.write_string( row, 0, designators, cellformats[0])
+        worksheet.write_string( row, 1, p, cellformats[1])
+        worksheet.write_number( row, 2, len(pieces), cellformats[2])
+        worksheet.write_url( row, 3, partslink[p], cellformats[3])
+
+        if len(designators) > field_sizes[0]:
+            field_sizes[0] = len(designators)
+        if len(p) > field_sizes[1]:
+            field_sizes[1] = len(p)
+        if len(partslink[p]) > field_sizes[3]:
+            field_sizes[3] = len(partslink[p])
+
+        row += 1
+
+    for i in range(len(field_sizes)):
+        worksheet.set_column( i, i, field_sizes[i])
+        
+    workbook.close()
+    
+    
+"""    
     with open("{}.csv".format(output_file_slug), 'w') as csvfile:
         bomwriter = csv.DictWriter(csvfile, fieldnames=field_names, delimiter=',',
                     quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -93,7 +133,7 @@ def write_bom_seeed(output_file_slug, components, links):
                                 'MPN/Seeed SKU': p,
                                 'Qty': len(pieces),
                                 'Link': partslink[p]})
-
+"""
 
 if __name__ == "__main__":
     input_file = sys.argv[1]
