@@ -2,7 +2,7 @@
 
 A [KiCad](https://kicad-pcb.org) Bill-of-Materials (BOM) plugin to follow
 [SeeedStudio](https://www.seedstudio.com)'s [Fusion PCBA](https://www.seeedstudio.com/fusion_pcb.html)
-assembly service's [template](https://statics3.seeedstudio.com/files/20184/2018.xlsx) [Fusion PCBA Log](http://support.seeedstudio.com/knowledgebase/articles/1886734-how-do-i-prepare-the-bill-of-materials-bom-file),
+assembly service's [template](https://statics3.seeedstudio.com/files/20184/2018.xlsx) ([Fusion PCBA Log](http://support.seeedstudio.com/knowledgebase/articles/1886734-how-do-i-prepare-the-bill-of-materials-bom-file)),
 that is:
 
 ```
